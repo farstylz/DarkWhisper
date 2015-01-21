@@ -1,0 +1,287 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body{
+	margin:0;
+	background-color:#000000;
+	font-size: 14px;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+}   
+
+.hero{
+	height:400px;
+	background-color:#111111;
+	background-image:url(../images/dw_background.jpg);
+	background-position: top center;
+	background-size:cover;
+	background-repeat: no-repeat;
+}
+
+.hero h1{
+	font-family: 'Volkhov', serif;
+	color:#fff;
+	text-align: center;	
+	font-weight: bold;
+	font-size: 7em;
+}
+
+.container{
+	margin: 0 auto;
+	max-width:1400px;
+	min-width:320px;
+	padding: 3em;
+}
+
+
+
+/*---------NAV BAR---------------------*/
+	
+.navbar {
+	text-align:center;
+	position:relative;
+	padding:2em;
+}
+
+.navbar:before {
+	content:"";
+	position:absolute;
+	display:block;
+	height:1px;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color:#444;
+	/* Safari 4-5, Chrome 1-9 */
+	/* Can't specify a percentage size? Laaaaaame. */
+	background: -webkit-gradient(radial, center center, 0, center center, 460, from(#444), to(#000));
+
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(circle, #444, #000);
+
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(circle, #444, #000);
+
+	/* IE 10 */
+	background: -ms-radial-gradient(circle, #444, #000);
+
+	/* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
+}
+
+.navbar.inverse:before{
+	bottom:auto;
+	top:0;
+}
+
+.navbar a {
+	font-size: 1.1em;
+	margin: 0 2em 0 2em;
+}
+
+.navbar span{
+	margin-right:0.5em;
+}
+a {
+	color:#fff;
+	text-decoration: none;
+}
+
+a:hover,a:active{
+	color:#ccc;
+}
+
+/*---------NAV BAR-------------------*/
+.pagebreak{
+	margin: 5em 0;
+}
+
+.light {
+	background-color:#0A0A0A;
+}
+
+.align-center {
+	display:block;
+	margin: 0 auto;
+}
+
+.ssday img{
+	margin: 0 auto;
+	width: 90%;
+}
+
+.img-small {
+	height:200px;
+	width:200px;
+}
+
+.art-content{
+	padding: 0
+}
+
+.art-content h1{
+	font-size: 2em;
+	margin-bottom: 0;
+}
+
+.art-content h2{
+	font-size: .75em;
+	text-decoration: italic;
+	color: #999999;
+}
+
+.art-content p{
+
+}
+
+form input{
+	margin-bottom: .75em;
+}
+
+
+h1#members {
+	font-size: 2em;
+	text-align: center;
+	padding: 1em 0 3em 0;
+}
+
+/*------- Transitions --------------*/
+
+
+.member {
+	display:block;
+	position: relative;
+	overflow: hidden;
+	margin:0;
+}
+
+.member figcaption {
+	position: absolute; 
+	background: rgba(0,0,0,0.75); 
+	color: white; 
+	padding: .5em 1.5em; 
+
+	left: 0; 
+  	right: 0;
+	bottom: 0;
+	-webkit-transition: all 200ms ease;
+	-moz-transition:    all 200ms ease;
+	-o-transition:      all 200ms ease;
+}
+
+.member .more {
+	position: absolute; 
+  	color: white;
+	background: rgba(0,0,0,0.75); 
+	padding: .25em .75em; 
+
+	left: 0; 
+  	right: 0;
+	bottom: -100%;
+	-webkit-transition: all 0.4s ease 100ms;
+	-moz-transition:    all 0.4s ease 100ms;
+	-o-transition:      all 0.4s ease 100ms;
+}
+
+.member:hover figcaption {
+  opacity: 0;
+}
+
+.member:hover .more {
+  bottom: 0;
+}
+
+
+/*------- Transitions ------------------------*/
+
+
+/*------------Grid----------------*/
+
+.column {
+	float:left;
+	margin: 0 0 5% 5%;
+}
+
+.column img{
+	max-width:100%;
+}
+
+.column:first-child {
+	margin-left:0;
+}
+
+.column.full {
+	width:100%;
+}  
+
+.column.two-thirds {
+	width:65%;
+}
+
+.column.half {
+	width:47.5%;
+}
+
+.column.one-third {
+	width:30%;
+}
+
+.column.one-fourth {
+	width:21.25%;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.row {
+	overflow:hidden;
+} 
+
+
+@media screen and (max-width: 640px) {
+	.column.full,
+	.column.two-thirds,
+	.column.half,
+	.column.one-third,
+	.column.one-fourth {
+		float: none;
+		margin: 0;
+		width: 100%;
+	}
+}
+
+
+/*------------Grid----------------*/
+
+
+
+/*------------Calender ----------*/
+
+
+.calendar{
+	border-collapse: collapse;
+	border: none;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.calendar td,
+.calendar th{
+	border: 1px solid #fff;
+	margin: 0;
+	padding: 1em;
+	width:14.28%;
+}	
+
+.calendar td{
+	min-height: 15px;
+}
