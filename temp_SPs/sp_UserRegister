@@ -1,0 +1,19 @@
+USE [DarkWhisperDB]
+GO
+
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+
+CREATE PROCEDURE [dbo].[UserRegister]
+     @Username               varchar(50),
+     @password               varchar(50),
+	 @Email					 varchar(50),
+	 @JoinDate				 date
+As
+SET NOCOUNT ON
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+Insert Into tblMembers with (rowlock)
+(UserName, Password, Email, JoinDate) Values (@Username, @password, @Email, @JoinDate) 

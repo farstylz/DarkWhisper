@@ -1,0 +1,21 @@
+USE [DarkWhisperDB]
+GO
+
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+
+CREATE PROCEDURE [dbo].[StartTopic]
+     @UserID				int,
+     @Forum					int,
+	 @Subject				VarChar(50),
+	 @Message				Varchar(2000),
+	 @CreateTime			datetime,
+
+As 
+SET NOCOUNT ON
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+INSERT INTO tblTopics WITH (ROWLOCK)
+(UserID, ForumName, Subject, Message, CreateTime ) Values (@UserID, @Forum, @Subject, @Message, @CreateTime)

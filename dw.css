@@ -10,7 +10,7 @@ body{
 	font-size: 14px;
 	color:#fff;
 	font-family: 'Open Sans', sans-serif;
-}   
+}
 
 .hero{
 	height:400px;
@@ -24,7 +24,7 @@ body{
 .hero h1{
 	font-family: 'Volkhov', serif;
 	color:#fff;
-	text-align: center;	
+	text-align: center;
 	font-weight: bold;
 	font-size: 7em;
 }
@@ -37,9 +37,20 @@ body{
 }
 
 
+.login {
+	margin: 0 auto;
+	max-width:500px;
+	min-width:320px;
+	padding: 3em;
+	padding:2em;
+	text-align: center;
+
+}
+
+
 
 /*---------NAV BAR---------------------*/
-	
+
 .navbar {
 	text-align:center;
 	position:relative;
@@ -158,12 +169,12 @@ h1#members {
 }
 
 .member figcaption {
-	position: absolute; 
-	background: rgba(0,0,0,0.75); 
-	color: white; 
-	padding: .5em 1.5em; 
+	position: absolute;
+	background: rgba(0,0,0,0.75);
+	color: white;
+	padding: .5em 1.5em;
 
-	left: 0; 
+	left: 0;
   	right: 0;
 	bottom: 0;
 	-webkit-transition: all 200ms ease;
@@ -172,12 +183,12 @@ h1#members {
 }
 
 .member .more {
-	position: absolute; 
+	position: absolute;
   	color: white;
-	background: rgba(0,0,0,0.75); 
-	padding: .25em .75em; 
+	background: rgba(0,0,0,0.75);
+	padding: .25em .75em;
 
-	left: 0; 
+	left: 0;
   	right: 0;
 	bottom: -100%;
 	-webkit-transition: all 0.4s ease 100ms;
@@ -214,7 +225,7 @@ h1#members {
 
 .column.full {
 	width:100%;
-}  
+}
 
 .column.two-thirds {
 	width:65%;
@@ -244,7 +255,7 @@ h1#members {
 
 .row {
 	overflow:hidden;
-} 
+}
 
 
 @media screen and (max-width: 640px) {
@@ -280,7 +291,7 @@ h1#members {
 	margin: 0;
 	padding: 1em;
 	width:14.28%;
-}	
+}
 
 .calendar td{
 	min-height: 15px;
@@ -289,3 +300,7 @@ h1#members {
 .calendar .blank{
 	background-color: #333;
 }
+
+/*------Forums -------*/
+
+.forum

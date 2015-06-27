@@ -113,7 +113,7 @@
 		<nav class="navbar container">
 			<a href="index.html"><span class="icon-home"></span>Home</a>
 			<a href="#members"><span class="icon-users"></span>Members</a>
-			<a href="forums.html"><span class="icon-bubbles"></span>Forums</a>
+			<a href="forums.asp"><span class="icon-bubbles"></span>Forums</a>
 			<a href="calendar.html"><span class="icon-calendar"></span>Calendar</a>
 		</nav>
 	</header>
