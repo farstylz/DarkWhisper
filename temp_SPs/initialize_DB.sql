@@ -1,0 +1,79 @@
+USE [DarkWhisper]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Users](
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL,
+	[Email] [varchar](50) NOT NULL,
+	[JoinDate] [date] NOT NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED
+(
+	[UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[Topics](
+	[TopicID] [int] IDENTITY(1,1) NOT NULL,
+	[UserID] [int] NOT NULL,
+	[TopicType] [varchar](50) NOT NULL,
+	[Time] [datetime] NOT NULL,
+	[Subject] [varchar](50) NOT NULL,
+	[Message] [varchar](2000) NOT NULL,
+ CONSTRAINT [PK_Topics] PRIMARY KEY CLUSTERED
+(
+	[TopicID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[Posts](
+	[PostID] [int] IDENTITY(1,1) NOT NULL,
+	[TopicID] [int] NOT NULL,
+	[UserID] [int] NOT NULL,
+	[Time] [datetime] NOT NULL,
+	[Message] [varchar](2000) NOT NULL,
+ CONSTRAINT [PK_Posts] PRIMARY KEY CLUSTERED
+(
+	[PostID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Topics]  WITH CHECK ADD  CONSTRAINT [FK_Topics_Users] FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+
+ALTER TABLE [dbo].[Topics] CHECK CONSTRAINT [FK_Topics_Users]
+GO
+
+ALTER TABLE [dbo].[Posts]  WITH CHECK ADD  CONSTRAINT [FK_Posts_Users] FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+
+ALTER TABLE [dbo].[Posts] CHECK CONSTRAINT [FK_Posts_Users]
+GO
+
+ALTER TABLE [dbo].[Posts]  WITH CHECK ADD  CONSTRAINT [FK_Posts_Topics] FOREIGN KEY([TopicID])
+REFERENCES [dbo].[Topics] ([TopicID])
+GO
+
+ALTER TABLE [dbo].[Posts] CHECK CONSTRAINT [FK_Posts_Topics]
+GO

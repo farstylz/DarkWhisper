@@ -1,0 +1,67 @@
+USE [DarkWhisperDB]
+GO
+
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+
+
+CREATE PROCEDURE [dbo].[Forum_GetTopics_ByPage3]
+     @ForumName						varchar(50),
+     @PageSize						int,
+     @PageIndex                     int
+As
+SET NOCOUNT ON
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+declare @StartID int
+declare @EndID int
+
+set @StartID = @PageSize * (@PageIndex - 1)
+set @EndID = @StartID + @PageSize + 1
+
+CREATE TABLE #TempSearch (
+     IndexID						int IDENTITY (1, 1),
+     ForumName						varchar(50),
+     TopicID                        int,
+	 Subject						varchar(50),
+	 UserID							int,
+	 UserName						varchar(50)
+	 )
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+insert Into #TempSearch ( ForumName, TopicID, Subject, UserID, UserName )
+select Top 1000 t.ForumName, t.TopicID, t.Subject, t.UserID, m.UserName
+from dbo.tblTopics t (nolock)
+Left Outer Join dbo.tblMembers m (nolock)
+On t.UserID=m.UserID
+where t.ForumName = @ForumName
+order by TopicID desc
+
+---------------------------------------------------------------------------------------------------------------------------------------*/
+
+declare @PageCount               int
+declare @Remainder               int
+
+Select @PageCount = ( count(indexID) / @PageSize ), @Remainder = ( count(indexID) % @PageSize )
+From #TempSearch (nolock)
+
+-- now get the total record count to return with the results for paging...
+declare @TotalCount          int
+Select @TotalCount = Count(IndexID)
+From #TempSearch (nolock)
+
+if @Remainder > 0
+     select @PageCount = @PageCount + 1
+
+delete from #TempSearch
+Where IndexID <= @StartID
+     or IndexID >= @EndID
+
+
+Select TS.*, @TotalCount as totalResults, @PageCount as maxPage
+From #TempSearch TS (nolock)
+Order By TS.IndexID Asc

@@ -4,24 +4,25 @@
 
 <%
 	'todo - user auth. current sessions always writes out UserName
-	Dim strSql, strForum, strSubject, strMessage, iUserID, dtCreateTime
+	Dim strSql, strTopicType, strSubject, strMessage, iUserID, dtCreateTime
 
-	strForum = Request.Form("Forum")
+	strTopicType = Request.Form("TopicType")
 	strSubject = Request.Form("Subject")
 	strMessage = Request.Form("Message")
 	dtCreateTime = Now
 	iUserID = Session("UserID")
 
 	Set objRS = CreateObject("ADODB.Recordset")
-	strSql = "StartTopic '" & iUserID & "','" & strForum & "','" & strSubject & _
+	strSql = "StartTopic " & iUserID & ",'" & strTopicType & "','" & strSubject & _
 	"','" & strMessage & "','" & dtCreateTime & "'"
 
+	Response.Write strSql
 	Set objRS = objConn.Execute(strSql)
 
 	objConn.Close
 	Set objConn = Nothing
 
-	Response.Write strForum
+	Response.Write strTopicType
   Response.Write strSubject
 	Response.Write strMessage
 	Response.Write dtCreateTime

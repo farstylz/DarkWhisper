@@ -1,7 +1,7 @@
 <%@ Language=VBScript %>
 <!--#include virtual="/adovbs.inc" -->
 <!--#include file="databaseconnect.asp" -->
-
+<!--#include file="header.asp" -->
 <%
 	Dim objRS, strUserName, strPassword, strSql, bolFailedLogin
 		bolFailedLogin = False
@@ -21,33 +21,13 @@
 			Session("UserName") = objRS("UserName")
 			Session("Password") = objRS("Password")
 			Session("UserID") = objRS("UserID")
-			Response.Redirect "index.asp"
+			Response.Write Session("UserID")
+			'Response.Redirect "index.asp"
 		End If
 		objConn.Close
 		Set objConn = Nothing
 	End If
 %>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Dark Whisper Clan</title>
-	<link href="css/dw.css" rel="stylesheet" type="text/css" />
-	<link href="css/font.css" rel="stylesheet" type="text/css" />
-	<link href="css/lightbox.css" rel="stylesheet" />
-	<link href='http://fonts.googleapis.com/css?family=Volkhov:700italic|Open+Sans:400,600' rel='stylesheet' type='text/css'>
-	<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/lightbox-2.6.min.js"></script>
-
-</head>
-<body>
-	<section class="hero">
-		<div class="container">
-			<h1>Dark Whisper</h1>
-		</div>
-	</section>
 	<section>
 		<div class="container">
 			<div class="light">

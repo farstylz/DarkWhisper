@@ -32,7 +32,8 @@
 					strEmail & "','" & dtJoinDate & "'"
 				Set objRS = objConn.Execute(strSql)
 				Session("UserName") = strUserName
-				Response.Redirect "index.html"
+				session("Password") = strPassword
+				Response.Redirect "index.asp"
 			Else
 				If objRS2("UserName") = strUserName Then
 					bolUserName = True
