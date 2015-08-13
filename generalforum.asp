@@ -7,15 +7,14 @@
 		<!-- Forums -->
 		<%
 			Dim strForumName, iPageSize, iPageIndex, strSqlTopics, objRS2
-			strForumName = Request.Querystring("Forum")
+			strTopicType = Request.Querystring("TopicType")
 			iPageSize = 20
-			iPageIndex = Request.Querystring("Page")
-			strSqlTopics = "GetTopics_ByPage'" & strForumName & "'," & iPageSize & ","_
-			& iPageIndex
+			iPage = Request.Querystring("Page")
+			strSqlTopics = "GetTopics_ByPage2 '" & strTopicType & "'," & iPageSize & ","_
+			& iPage
 
 			Set objRS2 = CreateObject("ADODB.Recordset")
 			Set objRS2 = objConn.Execute(strSqlTopics)
-
 
 		%>
 
@@ -34,7 +33,7 @@
 				<%
 				While Not objRS2.EOF
 					Response.Write "<tr>"
-					Response.Write "<td><a href='forumthread.asp?topic=" & objRS2("TopicID") & "'>" & objRS2("Subject")  & "</a></td>"
+					Response.Write "<td><a href='forumthread.asp?Page=1&topic=" & objRS2("TopicID") & "'>" & objRS2("Subject")  & "</a></td>"
 					Response.Write "<td>" & objRS2("UserName") & "</td>"
 					Response.Write "<td>1000</td>"
 					Response.Write "<td>By Goatboy Today 12:52CST</td>"

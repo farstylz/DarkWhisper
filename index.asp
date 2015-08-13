@@ -22,6 +22,11 @@
 					<article>
 						<h2>We Quit!</h2>
 						<h4>Posted by: Stylz</h4>
+						<a class="e-widget" href="https://gleam.io/ecNHq/ar15com-giveaway" rel="nofollow">AR15.COM Giveaway</a>
+						<script type="text/javascript" src="https://js.gleam.io/e.js" async="true"></script>
+						<hr/>
+						<a class="rcptr" href="http://www.rafflecopter.com/rafl/display/59dd58151/" rel="nofollow" data-raflid="59dd58151" data-theme="classic" data-template="" id="rcwidget_znvtg5ld">a Rafflecopter giveaway</a>
+						<script src="//widget-prime.rafflecopter.com/launch.js"></script>
 						<p>I know what your thinking, we usually last for at least a month.
 							 Well fuck you! Leveling was a bitch and nbobody ever got on.
 							 First world troubles, I know. Anyway... I'm going golfing. I'll

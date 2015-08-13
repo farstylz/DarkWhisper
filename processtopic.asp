@@ -14,19 +14,12 @@
 
 	Set objRS = CreateObject("ADODB.Recordset")
 	strSql = "StartTopic " & iUserID & ",'" & strTopicType & "','" & strSubject & _
-	"','" & strMessage & "'," & dtCreateTime
+	"','" & strMessage & "','" & dtCreateTime & "'"
 
 	Response.Write strSql
 	Set objRS = objConn.Execute(strSql)
 
 	objConn.Close
 	Set objConn = Nothing
-
-	Response.Write strTopicType
-  Response.Write strSubject
-	Response.Write strMessage
-	Response.Write dtCreateTime
-	Response.Write iUserID
-
 
 %>

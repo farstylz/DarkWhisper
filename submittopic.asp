@@ -19,3 +19,5 @@
 				<input type="text" name="Message" size="75"><br/>
 				<input type="submit" value="Submit">
 			</form>
+		<div>
+	<section>
