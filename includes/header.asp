@@ -25,7 +25,7 @@
 			<a href="login.asp">Login</a>
 			<a href="index.asp"><span class="icon-home"></span>Home</a>
 			<a href="index.asp#members"><span class="icon-users"></span>Members</a>
-			<a href="forums.asp"><span class="icon-bubbles"></span>Forums</a>
+			<a href="forums/forums.asp"><span class="icon-bubbles"></span>Forums</a>
 			<a href="calendar.asp"><span class="icon-calendar"></span>Calendar</a>
 		</nav>
 	</header>

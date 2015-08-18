@@ -1,8 +1,8 @@
 <%@ Language=VBScript %>
-<!--#include virtual="/adovbs.inc" -->
-<!--#include file="databaseconnect.asp" -->
-<!--#include file="sessions.asp" -->
-<!--#include file="header.asp" -->
+<!--#include virtual="includes/adovbs.inc" -->
+<!--#include file="includes/databaseconnect.asp" -->
+<!--#include file="includes/sessions.asp" -->
+<!--#include file="includes/header.asp" -->
 	<section class="container">
 		<!-- todo add querystring from whichever forum the topic will come from -->
 		<!-- todo add verification that user is logged in. Else redirect them. -->

@@ -1,8 +1,8 @@
 <%@ Language=VBScript %>
-<!--#include virtual="/adovbs.inc" -->
-<!--#include file="databaseconnect.asp" -->
-<!--#include file="sessions.asp" -->
-<!--#include file="header.asp" -->
+<!--#include virtual="includes/adovbs.inc" -->
+<!--#include file="includes/databaseconnect.asp" -->
+<!--#include file="includes/sessions.asp" -->
+<!--#include file="includes/header.asp" -->
 <%
 	Function GetMonthName(iMonth)
 		Select Case iMonth

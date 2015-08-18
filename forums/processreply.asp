@@ -1,6 +1,6 @@
 <%@ Language=VBScript %>
-<!--#include virtual="/adovbs.inc" -->
-<!--#include file="databaseconnect.asp" -->
+<!--#include virtual="includes/adovbs.inc" -->
+<!--#include file="includes/databaseconnect.asp" -->
 
 <%
 	function cleanSQL( tmpString )

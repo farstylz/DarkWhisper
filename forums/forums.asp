@@ -1,8 +1,8 @@
 <%@ Language=VBScript %>
-<!--#include virtual="/adovbs.inc" -->
-<!--#include file="databaseconnect.asp" -->
-<!--#include file="sessions.asp" -->
-<!--#include file="header.asp" -->
+<!--#include virtual="includes/adovbs.inc" -->
+<!--#include virtual="includes/databaseconnect.asp" -->
+<!--#include virtual="includes/sessions.asp" -->
+<!--#include virtual="includes/header.asp" -->
 	<section class="container">
 		<!-- Forums -->
 		<div>
