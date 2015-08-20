@@ -1,6 +1,7 @@
 <%@ Language=VBScript %>
 <!--#include virtual="includes/adovbs.inc" -->
-<!--#include file="includes/databaseconnect.asp" -->
+<!--#include virtual="includes/databaseconnect.asp" -->
+
 
 <%
 	'todo - user auth. current sessions always writes out UserName

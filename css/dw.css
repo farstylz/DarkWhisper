@@ -216,6 +216,10 @@ h1#members {
 	width:100%;
 }  
 
+.column.three-fourths {
+    width:75%;
+}
+
 .column.two-thirds {
 	width:65%;
 }
@@ -284,4 +288,18 @@ h1#members {
 
 .calendar td{
 	min-height: 15px;
+}
+
+/*-----------Forums---------------*/
+
+.forum1 {
+    background-color: ##636363
+}
+
+.forum2 {
+    background-color: #787878
+}
+
+.forum3 {
+    background-color: #999999
 }

@@ -1,9 +1,9 @@
 <%@ Language=VBScript %>
-<% Option Explicit %>
+
 <!--#include virtual="includes/adovbs.inc" -->
-<!--#include file="includes/databaseconnect.asp" -->
-<!--#include file="includes/sessions.asp" -->
-<!--#include file="includes/header.asp" -->
+<!--#include virtual="includes/databaseconnect.asp" -->
+<!--#include virtual="includes/sessions.asp" -->
+<!--#include virtual="includes/header.asp" -->
 <%
 	Dim objRS, strUserName, strPassword, strSql, bolFailedLogin
 		bolFailedLogin = False

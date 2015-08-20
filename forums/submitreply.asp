@@ -1,8 +1,8 @@
 <%@ Language=VBScript %>
 <!--#include virtual="includes/adovbs.inc" -->
-<!--#include file="includes/databaseconnect.asp" -->
-<!--#include file="includes/sessions.asp" -->
-<!--#include file="includes/header.asp" -->
+<!--#include virtual="includes/databaseconnect.asp" -->
+<!--#include virtual="includes/sessions.asp" -->
+<!--#include virtual="includes/header.asp" -->
 
 <section class="container">
 	<!-- todo add querystring from whichever forum the topic will come from -->

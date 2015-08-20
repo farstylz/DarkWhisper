@@ -1,8 +1,8 @@
 <%@ Language=VBScript %>
 <!--#include virtual="includes/adovbs.inc" -->
-<!--#include file="includes/databaseconnect.asp" -->
-<!--#include file="includes/sessions.asp" -->
-<!--#include file="includes/header.asp" -->
+<!--#include virtual="includes/databaseconnect.asp" -->
+<!--#include virtual="includes/sessions.asp" -->
+<!--#include virtual="includes/header.asp" -->
 	<section class="light">
 		<div class="container">
 			<div class="row clearfix">

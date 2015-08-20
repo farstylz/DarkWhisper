@@ -1,8 +1,8 @@
 <%@ Language=VBScript %>
 
 <!--#include virtual="includes/adovbs.inc" -->
-<!--#include file="includes/databaseconnect.asp" -->
-<!--#include file="includes/header.asp" -->
+<!--#include virtual="includes/databaseconnect.asp" -->
+<!--#include virtual="includes/header.asp" -->
 <%
 	Dim objRS, objRS2, strUserName, strPassword, strEmail, strEmail2, strEmail3, _
 		strSql, bolUserName, bolEmail, bolFailedEmail, dtJoinDate
