@@ -10,8 +10,6 @@
 			bolLoggedIn = False
 		Else
 			bolLoggedIn = True
-			Response.Write Session("UserName") & " is currently logged in."
-			Response.Write Session("UserID")
 		End If
 	End If
 %>

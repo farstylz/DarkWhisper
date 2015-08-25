@@ -21,52 +21,53 @@
 
 <section class="light">
 	<div class="container">
-		<%
-        'GET TOPIC
-		Response.Write "<a href='submitreply.asp?TopicID=" & iTopicID & "'>Post A Reply!</a>"
-
-		While Not objRSTopic.EOF
-		%>
-        <div class="column full">
-			<table>
-				<tr class="forum1">
-					<th><%=objRSTopic("Subject")%></th>
-				</tr>
-				<tr class="forum2">
-					<td>Posted by: <%=objRSTopic("UserName")%> At: <%=objRSTopic("Time")%> <br/>Member Since: <%=objRSTopic("UserJoinDate")%></td>
-				</tr>
-				<tr class="forum3">
-					<td><%=objRSTopic("Message")%></td>
-				</tr>
-			</table>
-        </div>
-		<%
-		Response.Write objRSTopic("TotalPosts")
-		Response.Write "<br/>"
-		Response.Write objRSTopic("TotalPages")
-		objRSTopic.MoveNext
-		Wend
-
-        'GET POSTS
-        For posts = 1 to iPageSize 
-            While Not objRSPosts.EOF
-		%>
-            <div class="column full">
-			    <table>
-				    <tr>
-					    <td>Posted by: <%=objRSPosts("UserName")%> At: <%=objRSPosts("Time")%> <br/>Member Since: <%=objRSPosts("UserJoinDate")%></td>
-				    </tr>
-				    <tr>
-					    <td><%=objRSPosts("Message")%></td>
-				    </tr>
-			    </table>
+		    <%
+            'GET TOPIC
+		    Response.Write "<a href='submitreply.asp?TopicID=" & iTopicID & "'>Post A Reply!</a>"
+                 
+		    While Not objRSTopic.EOF
+		    %>
+            <div class="row clearfix">
+                <div class="column full">
+			        <table width="100%">
+				        <tr class="forum1">
+					        <th><%=objRSTopic("Subject")%></th>
+				        </tr>
+				        <tr class="forum2">
+					        <td>Posted by: <%=objRSTopic("UserName")%> At: <%=objRSTopic("Time")%> <br/>Member Since: <%=objRSTopic("UserJoinDate")%></td>
+				        </tr>
+				        <tr class="forum3">
+					        <td><%=objRSTopic("Message")%></td>
+				        </tr>
+			        </table>
+                </div>
             </div>
-		<%
-		    objRSPosts.MoveNext
+		    <%
+		    objRSTopic.MoveNext
 		    Wend
-        Next
-		%>
 
+            'GET POSTS
+            For posts = 1 to iPageSize 
+                While Not objRSPosts.EOF
+		    %>
+            <div class="row clearfix">
+                <div class="column full">
+			        <table width="100%">
+				        <tr class="forum2">
+					        <td>Posted by: <%=objRSPosts("UserName")%> At: <%=objRSPosts("Time")%> <br/>Member Since: <%=objRSPosts("UserJoinDate")%></td>
+				        </tr>
+				        <tr class="forum3">
+					        <td><%=objRSPosts("Message")%></td>
+				        </tr>
+			        </table>
+                </div>
+            </div>
+		    <%
+		        objRSPosts.MoveNext
+		        Wend
+            Next
+            Response.Write "<a href='submitreply.asp?TopicID=" & iTopicID & "'>Post A Reply!</a>"
+		    %>
 
 
 	</div>

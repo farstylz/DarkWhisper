@@ -46,6 +46,12 @@ body{
 	padding:2em;
 }
 
+.navbar-login {
+    text-align:right;
+	position:relative;
+	padding:2em;
+}
+
 .navbar:before {
 	content:"";
 	position:absolute;
@@ -293,7 +299,7 @@ h1#members {
 /*-----------Forums---------------*/
 
 .forum1 {
-    background-color: ##636363
+    background-color: #636363
 }
 
 .forum2 {
