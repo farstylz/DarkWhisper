@@ -6,18 +6,19 @@
 	<section class="container">
 		<!-- Forums -->
 		<%
-			Dim strForumName, iPageSize, iPageIndex, strSqlTopics, objRSTopics, objRSReplies, objRSRecent
+			Dim strForumName, iPage, iPageSize, iPageIndex, strTopicType, strSqlTopics, strSqlReplies, objRSTopics, objRSReplies, objRSRecent
 			strTopicType = Request.Querystring("TopicType")
 			iPageSize = 20
 			iPage = Request.Querystring("Page")
-			strSqlTopics = "GetTopics_ByPage2 '" & strTopicType & "'," & iPageSize & ","_
-			& iPage
+			strSqlTopics = "GetTopics_ByPage2 '" & strTopicType & "'," & iPageSize & "," & iPage
 
 			Set objRSTopics = CreateObject("ADODB.Recordset")
 			Set objRSTopics = objConn.Execute(strSqlTopics)
 
+            strSqlReplies = "Get_Post_Replies " & objRSTopics("TopicID")
+
             Set objRSReplies = CreateObject("ADODB.Recordset")
-            Set objRSReplies = objConn.Execute(objRSTopics("TopicID"))
+            Set objRSReplies = objConn.Execute(strSqlReplies)
 
 
 		%>
@@ -44,6 +45,7 @@
 					Response.Write "</tr>"
 					Response.Flush
 					objRSTopics.MoveNext
+                    objRSReplies.MoveFirst
 
 				Wend
 
