@@ -23,8 +23,7 @@
 			Session("UserName") = objRS("UserName")
 			Session("Password") = objRS("Password")
 			Session("UserID") = objRS("UserID")
-			Response.Write Session("UserID")
-			'Response.Redirect "index.asp"
+			Response.Redirect "/index.asp"
 		End If
 		objConn.Close
 		Set objConn = Nothing

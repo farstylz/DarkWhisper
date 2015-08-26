@@ -3,7 +3,7 @@
 <!--#include virtual="includes/databaseconnect.asp" -->
 <!--#include virtual="includes/sessions.asp" -->
 <!--#include virtual="includes/header.asp" -->
-	<section class="light">
+	<section>
 		<div class="container">
 			<div class="row clearfix">
 				<div class="column two-thirds">
@@ -75,7 +75,7 @@
 		</div>
 	</section>
 	<div class="pagebreak"></div>
-	<section>
+	<section class="light">
 		<div class="container">
 				<h1 id="members">Members</h1>
 			<div class="row clearfix">

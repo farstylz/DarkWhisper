@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript %>=
 <!--#include virtual="includes/adovbs.inc" -->
 <!--#include virtual="includes/databaseconnect.asp" -->
 <!--#include virtual="includes/sessions.asp" -->
@@ -9,15 +9,15 @@
 		<div>
 			<form method="post" action="processtopic.asp">
 				<%
-				Dim strTopicType
-				strTopicType = Request.Querystring("TopicType")
+				Dim iCategory
+				iCategory = Request.Querystring("Category")
 				%>
-				<input hidden name="TopicType" value="<%= strTopicType %>"/>
+				<input hidden name="Category" value="<%= iCategory %>"/>
 				<Label>Subject:</label><br/>
 				<input type="text" name="Subject"><br/>
 				<Label>Message:</label><br/>
 				<input type="text" name="Message" size="75"><br/>
 				<input type="submit" value="Submit">
 			</form>
-		<div>
-	<section>
+		</div>
+	</section>

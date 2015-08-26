@@ -28,7 +28,7 @@ GO
 CREATE TABLE [dbo].[Topics](
 	[TopicID] [int] IDENTITY(1,1) NOT NULL,
 	[UserID] [int] NOT NULL,
-	[TopicType] [varchar](50) NOT NULL,
+	[Category] [int] NOT NULL,
 	[Time] [datetime] NOT NULL,
 	[Subject] [varchar](50) NOT NULL,
 	[Message] [varchar](2000) NOT NULL,

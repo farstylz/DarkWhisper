@@ -14,20 +14,23 @@
 	end function
 
 	'todo - user auth. current sessions always writes out UserName
-	Dim strSql, strTopicID, strMessage, iUserID, dtCreateTime
+	Dim strSql, iTopicID, strMessage, iUserID, dtCreateTime, iCategory
 
-	strTopicID = Request.Form("TopicID")
+    iCategory = Request.Form("CategoryID")
+	iTopicID = Request.Form("TopicID")
 	strMessage = cleanSQL(Request.Form("Message"))
 	dtCreateTime = Now
 	iUserID = Session("UserID")
 
 	Set objRS = CreateObject("ADODB.Recordset")
-	strSql = "PostReply " & iUserID & "," & strTopicID & ",'" & strMessage & "','" & dtCreateTime & "'"
+	strSql = "PostReply " & iUserID & "," & iTopicID & ",'" & strMessage & "','" & dtCreateTime & "'," & iCategory 
 
 	Response.Write strSql
 	Set objRS = objConn.Execute(strSql)
 
 	objConn.Close
 	Set objConn = Nothing
+
+    Response.Redirect "/forums/forumthread.asp?Category=" & iCategory & "&Page=1&Topic=" & iTopicID 
 
 %>

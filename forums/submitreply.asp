@@ -10,10 +10,12 @@
 	<div>
 		<form method="post" action="processreply.asp">
 			<%
-			Dim strTopicID
-			strTopicID = Request.Querystring("TopicID")
+			Dim iTopicID, iCategory
+			iTopicID = Request.Querystring("TopicID")
+            iCategory = Request.QueryString("CategoryID")
 			%>
-			<input hidden name="TopicID" value="<%= strTopicID %>"/>
+			<input hidden name="TopicID" value="<%= iTopicID %>"/>
+            <input hidden name="CategoryID" value="<%= iCategory %>"/>
 			<Label>Message:</label><br/>
 			<input type="text" name="Message" size="75"><br/>
 			<input type="submit" value="Submit">
