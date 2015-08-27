@@ -37,12 +37,14 @@
             <ul class="dropdown">
                 <li>
                     <%=Session("UserName")%>
-                </li>
-                <li>
-                    <a href="/member.asp?UserID=<%=Session("UserID")%>">Account Settings</a>
-                </li>
-                <li>
-                    <a href="/logout.asp">Log Out</a>
+                    <ul>
+                        <li>
+                            <a href="/member.asp?UserID=<%=Session("UserID")%>">Account Settings</a>
+                        </li>
+                        <li>
+                            <a href="/logout.asp">Log Out</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>    
             <%
