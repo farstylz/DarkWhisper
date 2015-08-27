@@ -2,6 +2,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Dark Whisper Clan</title>
 	<link href="/css/dw.css" rel="stylesheet" type="text/css" />
+    <link href="/css/Dropdown.css" rel="stylesheet" type="text/css" />
 	<link href="/css/font.css" rel="stylesheet" type="text/css" />
 	<link href="/css/lightbox.css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Volkhov:700italic|Open+Sans:400,600' rel='stylesheet' type='text/css'>
@@ -11,14 +12,19 @@
 	<script src="/js/jquery-1.10.2.min.js"></script>
 	<script src="/js/lightbox-2.6.min.js"></script>
     <script src="/js/Dropdown.src.js"></script>
-    <!--<script src="/js/menu.js"></script> -->
     <script>
         // initialise the drop-down menus
         runOnLoad(Dropdown.initialise);
-
-        // apply the JavaScript to a menu by passing an ID
-        Dropdown.applyTo('menu1');
-</script>
+    </script>
+    <% 
+        Sub MenuButton_OnClick
+            Session("UserID").Abandon
+            Session("UserName").Abandon
+            Session("Password").Abandon
+        End Sub
+    %>
+        
+   
 </head>
 <body>
 	<section class="hero">
@@ -38,7 +44,7 @@
             If bolLoggedIn = True Then
                 '<a href='/member.asp?UserID=" & Session("UserID") & "'>" & Session("UserName") & "</a>"
             %>
-            <ul id="menu1" class="dropdown">
+            <ul class="dropdown">
                 <li>
                     <%=Session("UserName")%>
                     <ul>
@@ -46,7 +52,7 @@
                             <a href="/member.asp?UserID=<%=Session("UserID")%>">Account Settings</a>
                         </li>
                         <li>
-                            <a href="/logout.asp">Log Out</a>
+                            <button type="button" name="MenuButton">Log Out</button>
                         </li>
                     </ul>
                 </li>

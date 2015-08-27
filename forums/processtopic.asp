@@ -32,5 +32,6 @@
 	objConn.Close
 	Set objConn = Nothing
 
+    Response.Redirect "/forums/forumthread.asp?Category=" & iCategory & "&Page=1&Topic=" & iTopicID 
 
 %>
