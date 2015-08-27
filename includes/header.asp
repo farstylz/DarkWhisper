@@ -10,8 +10,15 @@
 	<![endif]-->
 	<script src="/js/jquery-1.10.2.min.js"></script>
 	<script src="/js/lightbox-2.6.min.js"></script>
-    <script src="/js/Dropdown.js"></script>
-    <script src="/js/menu.js"></script>
+    <script src="/js/Dropdown.src.js"></script>
+    <!--<script src="/js/menu.js"></script> -->
+    <script>
+        // initialise the drop-down menus
+        runOnLoad(Dropdown.initialise);
+
+        // apply the JavaScript to a menu by passing an ID
+        Dropdown.applyTo('menu1');
+</script>
 </head>
 <body>
 	<section class="hero">
