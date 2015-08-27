@@ -11,10 +11,7 @@
 	<script src="/js/jquery-1.10.2.min.js"></script>
 	<script src="/js/lightbox-2.6.min.js"></script>
     <script src="/js/Dropdown.js"></script>
-    <script>
-        // initialise the drop-down menus
-        runOnLoad(Dropdown.initialise);
-    </script>
+    <script src="/js/menu.js"></script>
 </head>
 <body>
 	<section class="hero">
@@ -34,7 +31,7 @@
             If bolLoggedIn = True Then
                 '<a href='/member.asp?UserID=" & Session("UserID") & "'>" & Session("UserName") & "</a>"
             %>
-            <ul class="dropdown">
+            <ul id="menu1" class="dropdown">
                 <li>
                     <%=Session("UserName")%>
                     <ul>

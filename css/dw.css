@@ -99,7 +99,30 @@ a:hover,a:active{
 	color:#ccc;
 }
 
-/*----------------------------*/
+/*-------------Dopdown---------------*/
+
+/* set the background colour */
+.dropdown,
+.dropdown ul{
+  background : rgb(128,192,64);
+}
+
+/* pad items, set their text colour, and fade their background colour */
+.dropdown a,
+.dropdown span{
+  padding    : 0.25em 0.5em;
+  color      : white;
+  transition : background 0.2s;
+}
+
+/* set the background colour of active items */
+.dropdown li:hover > a,
+.dropdown li:hover > span,
+.dropdown li.dropdownOpen > a,
+.dropdown li.dropdownOpen > span{
+  background : rgb(160,208,112);
+}
+/*------------------------------------*/
 .pagebreak{
 	margin: 5em 0;
 }
