@@ -10,7 +10,11 @@
 	<![endif]-->
 	<script src="/js/jquery-1.10.2.min.js"></script>
 	<script src="/js/lightbox-2.6.min.js"></script>
-
+    <script src="/js/Dropdown.js"></script>
+    <script>
+        // initialise the drop-down menus
+        runOnLoad(Dropdown.initialise);
+    </script>
 </head>
 <body>
 	<section class="hero">
@@ -28,9 +32,22 @@
 			<a href="/calendar.asp"><span class="icon-calendar"></span>Calendar</a>
             <% 
             If bolLoggedIn = True Then
-                Response.Write "<a href='/member.asp?UserID=" & Session("UserID") & "'>" & Session("UserName") & "</a>"
+                '<a href='/member.asp?UserID=" & Session("UserID") & "'>" & Session("UserName") & "</a>"
+            %>
+            <ul class="dropdown">
+                <li>
+                    <%=Session("UserName")%>
+                </li>
+                <li>
+                    <a href="/member.asp?UserID=<%=Session("UserID")%>">Account Settings</a>
+                </li>
+                <li>
+                    <a href="/logout.asp">Log Out</a>
+                </li>
+            </ul>    
+            <%
             Else
-                Response.Write "<a class='navbar-login' href='/login.asp'>Login</a>"
+                Response.Write "<a href='/login.asp'>Login</a>"
             End If  
             %>
 		</nav>
