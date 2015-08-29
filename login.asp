@@ -31,7 +31,7 @@
 %>
 	<section>
 		<div class="container">
-			<div class="light">
+			<div class="light login">
 				<form method=post action="login.asp">
 					<%
 						If bolFailedLogin = True Then

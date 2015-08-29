@@ -7,7 +7,7 @@
 
 .dropdown ul{
   display  : none;
-  position : relative;
+  position : absolute;
   top      : 100%;
   left     : 0;
   z-index  : 1;

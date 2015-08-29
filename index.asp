@@ -22,8 +22,10 @@
 					<article>
 						<h2>We Quit!</h2>
 						<h4>Posted by: Stylz</h4>
-						<a class="e-widget" href="https://gleam.io/ecNHq/ar15com-giveaway" rel="nofollow">AR15.COM Giveaway</a>
-						<script type="text/javascript" src="https://js.gleam.io/e.js" async="true"></script>
+						<script type="text/javascript">
+                            var cnt_id = "e2bf546a-22104";
+                        </script>
+                        <script type="text/javascript" src="https://www.viralsweep.com/external/widget.js"></script>     
 						<hr/>
 						<a class="rcptr" href="http://www.rafflecopter.com/rafl/display/59dd58151/" rel="nofollow" data-raflid="59dd58151" data-theme="classic" data-template="" id="rcwidget_znvtg5ld">a Rafflecopter giveaway</a>
 						<script src="//widget-prime.rafflecopter.com/launch.js"></script>
@@ -52,14 +54,14 @@
 				<div class="column one-third">
 					<aside>
 						<form action="www.example.com/weiner">
-							<h2>Which server should we choose?</h2>
-							<input type="radio" name="server" value="Tamriel"/> Tamriel
+							<h2>What's Our Next Game?</h2>
+							<input type="radio" name="game" value="lawbreakers"/> Law Breakers
 							<br/>
-							<input type="radio" name="server" value="Vvardenfel"/> Vvardenfel
+							<input type="radio" name="game" value="blah"/> Blah
 							<br/>
-							<input type="radio" name="server" value="New Gnisis"/> New Gnisis
+							<input type="radio" name="game" value="wow"/> Back to WoW
 							<br/>
-							<input type="radio" name="server" value="Vivica"/> Vivica
+							<input type="radio" name="game" value="quit"/> I HATE GAMES!
 							<br/>
 							<input type="submit" value="submit"/>
 						</form>
@@ -81,28 +83,28 @@
 			<div class="row clearfix">
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>Goatboy</figcaption>
 						<span class="more">Member Since: 1996<br>Status: Active <br>Email: Goatboy42@suckit.com</span>
 					</figure>
 				</div>
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>Spawn</figcaption>
 						<span class="more">Member Since: 1998 <br>Status: Active<br>Email: RivalSummit@gmail.com</span>
 					</figure>
 				</div>
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>Diki</figcaption>
 						<span class="more">Member Since: 2001 <br>Status: Bi-Curious<br>zerospin@whatever.com
 					</figure>
 				</div>
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>FarStyLz</figcaption>
 						<span class="more">Member Since: 2000 <br>Status: Awesome<br>Email: Farstylz@gmail.com
 					</figure>
@@ -111,25 +113,25 @@
 			<div class="row clearfix">
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>Geekboy2u</figcaption>
 					</figure>
 				</div>
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>Robocop</figcaption>
 					</figure>
 				</div>
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>Marco</figcaption>
 					</figure>
 				</div>
 				<div class="column one-fourth">
 					<figure class="member">
-						<img src="images/employee.jpg">
+						<img src="images/dreadbit.png">
 						<figcaption>Polo</figcaption>
 					</figure>
 				</div>
