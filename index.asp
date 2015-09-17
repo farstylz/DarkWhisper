@@ -5,7 +5,7 @@
 <!--#include virtual="includes/header.asp" -->
 	<section>
 		<div class="container">
-			<div class="row clearfix">
+			<div class="row">
 				<div class="column two-thirds">
 					<article class="art-content">
 						<h1>Welcome Back MOFOS!</h1>
@@ -22,13 +22,6 @@
 					<article>
 						<h2>We Quit!</h2>
 						<h4>Posted by: Stylz</h4>
-						<script type="text/javascript">
-                            var cnt_id = "e2bf546a-22104";
-                        </script>
-                        <script type="text/javascript" src="https://www.viralsweep.com/external/widget.js"></script>     
-						<hr/>
-						<a class="rcptr" href="http://www.rafflecopter.com/rafl/display/59dd58151/" rel="nofollow" data-raflid="59dd58151" data-theme="classic" data-template="" id="rcwidget_znvtg5ld">a Rafflecopter giveaway</a>
-						<script src="//widget-prime.rafflecopter.com/launch.js"></script>
 						<p>I know what your thinking, we usually last for at least a month.
 							 Well fuck you! Leveling was a bitch and nbobody ever got on.
 							 First world troubles, I know. Anyway... I'm going golfing. I'll
@@ -49,11 +42,45 @@
 							</article>
 						</div>
 					</div>
-
 				</div>
 				<div class="column one-third">
 					<aside>
-						<form action="www.example.com/weiner">
+                       <!----- Poll ----->
+                        <% 
+                            
+                            Dim userIPAddress, objRSQuestions, objRSIPCheck, objRSAnswers
+                            Dim strSqlQuestions, strSqlAnswers, strSqlIPCheck
+
+                            'Get USer IP
+                            userIPAddress = Request.ServerVariables("HTTP_X_FORWARDED_FOR")
+                            IF userIPAddress = "" Then
+                                userIPAddress = Request.ServerVariables("REMOTE_ADDR")
+                            End IF  
+
+                            'Check User's IP vs DB 
+                            strSqlIPCheck = "Check_Poll_IP " & userIPAddress
+                            objRSIPcheck = Server.CreateObject("ADODB.Recordset")
+                            objRSIPcheck = objCOnn.Execute(strSqlIPCheck)
+                            
+                            If objRSIPCheck.EOF Then
+                               
+                                'Get Poll Questions ( hasn't voted yet)
+
+                                strSqlQuestions = ""
+                                objRSPoll = Server.CreateObject("ADODB.Recordset")
+                                objRSPoll = objConn.Execute(strSqlQuestions)
+
+                            Else
+                                
+                            'Get Poll Answers ( Already submitted )
+
+                            strSqlAnswers = ""
+                            objRSAnswers = Server.CreateObject("ADODB.Recordset")
+                            objRSAnswers = objConn.Execute(strSqlAnswers)
+
+                           
+                        %>
+						<form action="" method="post">
 							<h2>What's Our Next Game?</h2>
 							<input type="radio" name="game" value="lawbreakers"/> Law Breakers
 							<br/>
@@ -80,7 +107,7 @@
 	<section class="light">
 		<div class="container">
 				<h1 id="members">Members</h1>
-			<div class="row clearfix">
+			<div class="row">
 				<div class="column one-fourth">
 					<figure class="member">
 						<img src="images/dreadbit.png">
@@ -110,7 +137,7 @@
 					</figure>
 				</div>
 			</div>
-			<div class="row clearfix">
+			<div class="row">
 				<div class="column one-fourth">
 					<figure class="member">
 						<img src="images/dreadbit.png">

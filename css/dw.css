@@ -31,11 +31,18 @@ body{
 
 .container{
 	margin: 0 auto;
-	max-width:1400px;
+	max-width:1200px;
 	min-width:320px;
 	padding: 3em;
 }
 
+.textbox{
+    min-height:100px;
+    overflow:auto;
+    resize:vertical;
+    width:64%;
+    position:relative;
+}
 
 
 .pull-left{
@@ -69,7 +76,6 @@ body{
 	right:0;
 	background-color:#444;
 	/* Safari 4-5, Chrome 1-9 */
-	/* Can't specify a percentage size? Laaaaaame. */
 	background: -webkit-gradient(radial, center center, 0, center center, 460, from(#444), to(#000));
 
 	/* Safari 5.1+, Chrome 10+ */
@@ -81,8 +87,9 @@ body{
 	/* IE 10 */
 	background: -ms-radial-gradient(circle, #444, #000);
 
-	/* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
+	/* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, now it kinda does but it's kinda broken (doesn't do sizing) */
 }
+
 
 .navbar.inverse:before{
 	bottom:auto;
@@ -267,16 +274,14 @@ h1#members {
 
 .column {
 	float:left;
-	margin: 0 0 5% 5%;
+    padding-left:1em;
+    padding-right:1em;
 }
 
 .column img{
 	max-width:100%;
 }
 
-.column:first-child {
-	margin-left:0;
-}
 
 .column.full {
 	width:100%;
@@ -287,33 +292,34 @@ h1#members {
 }
 
 .column.two-thirds {
-	width:65%;
+	width:66.7%;
 }
 
 .column.half {
-	width:47.5%;
+	width:50%;
 }
 
 .column.one-third {
-	width:30%;
+	width:33.3%;
 }
 
 .column.one-fourth {
-	width:21.25%;
+	width:25%;
 }
 
-.clearfix:before,
-.clearfix:after {
+.row:before,
+.row:after {
 	content: " ";
 	display: table;
 }
 
-.clearfix:after {
+.row:after {
 	clear: both;
 }
 
 .row {
 	overflow:hidden;
+    margin-bottom:2em;
 } 
 
 
@@ -358,14 +364,25 @@ h1#members {
 
 /*-----------Forums---------------*/
 
-.forum1 {
-    background-color: #636363
+.user-image{
+    min-height:50px;
+    min-width:50px;
+    max-height:150px;
+    max-width:150px;
+    margin-top:.5em;
+    margin-bottom:.5em;
+    
 }
 
-.forum2 {
-    background-color: #787878
+.thread{
+    border-top:1px solid #808080;
 }
 
-.forum3 {
-    background-color: #999999
+
+.post,
+.thread{
+    border-bottom:1px solid #808080;
+    margin:0;
+    padding-bottom:1.5em;
+    padding-top:1.5em;
 }

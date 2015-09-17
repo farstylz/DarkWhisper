@@ -19,7 +19,7 @@
 		%>
 
 		<div>
-            <h2><a href="/forums/categories.asp">Forum</a> > <a href="/forums/generalforum.asp?Category=<%=iCategory%>&Page=1"><%=iCategory%></a></h2>
+            <h4><a href="/forums/categories.asp">Forum</a> > <a href="/forums/generalforum.asp?Category=<%=iCategory%>&Page=1"><%=iCategory%></a></h4>
 			<h1><%=iCategory%></h1>
             <%
             If bolLoggedIn = True Then
@@ -31,7 +31,7 @@
 			<hr/>
 			<table>
 				<tr>
-					<!-- Temp bullshit -->
+					<!-- Topics -->
 					<th>Topic</th>
 					<th>Author</th>
 					<th>Replies</th>
@@ -47,20 +47,28 @@
                     strSqlRecent = "Get_Most_Recent " & objRSTopics("TopicID")
                     Set objRSRecent = CreateObject("ADODB.Recordset")
                     Set objRSRecent = objConn.Execute(strSqlRecent)
-
-					Response.Write "<tr>"
-					Response.Write "<td><a href='forumthread.asp?Category=" & iCategory & "&Page=1&topic=" & objRSTopics("TopicID") & "'>" & objRSTopics("Subject")  & "</a></td>"
-					Response.Write "<td>" & objRSTopics("UserName") & "<br/>" & objRSTopics("Time") & "</td>"
-					Response.Write "<td>" & objRsReplies("TotalReplies") & "</td>"
-
+                %>
+                    
+                    <tr>
+                        <td><a href="forumthread.asp?Category=<%=iCategory%>&Page=1&topic=<%=objRSTopics("TopicID")%>"><%=objRSTopics("Subject")%></a></td>
+                        <td>Posted By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></td>
+                        <td><%=objRsReplies("TotalReplies")%></td>
+                    
+                    
+					
+                <%
                     IF objRSRecent.EOF Then
-                        Response.Write "<td>By " & objRSTopics("UserName") & "<br/>" & objRSTopics("Time") & "</td>"					    
+                %>
+                        <td>By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></td>                       
+                <%
                     Else
-                        Response.Write "<td>By " & objRSRecent("UserName") & "<br/>" & objRSRecent("Time") & "</td>"
+                %>					                        
+                        <td>By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSRecent("UserName")%></a><br /><%=objRSRecent("Time")%></td>
+                    </tr>
+                <%
                     End If
-					Response.Write "</tr>"
                     objRSReplies.Close
-                    Set objRSReplies = Nothing
+                    Set objRSReplies = Nothing 
                     objRSRecent.Close
                     Set objRSRecent = Nothing
 					objRSTopics.MoveNext

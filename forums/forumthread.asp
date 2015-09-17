@@ -20,10 +20,10 @@
 
 %>
 
-<section class="light">
+<section>
 	<div class="container">
         
-        <h2><a href="/forums/categories.asp">Forum</a> > <a href="/forums/generalforum.asp?Category=<%=iCategory%>&Page=1"><%=iCategory%></a></h2>
+        <h3><a href="/forums/categories.asp">Forum</a> > <a href="/forums/generalforum.asp?Category=<%=iCategory%>&Page=1"><%=iCategory%></a></h3>
 		<%
         'GET TOPIC
 
@@ -35,48 +35,62 @@
                  
 		While Not objRSTopic.EOF
 		%>
-        <div class="row clearfix">
-            <div class="column full">
-			    <table width="100%">
-				    <tr class="forum1">
-					    <th><%=objRSTopic("Subject")%></th>
-				    </tr>
-				    <tr class="forum2">
-					    <td>Posted by: <%=objRSTopic("UserName")%> At: <%=objRSTopic("Time")%> <br/>Member Since: <%=objRSTopic("UserJoinDate")%></td>
-				    </tr>
-				    <tr class="forum3">
-					    <td><%=objRSTopic("Message")%></td>
-				    </tr>
-			    </table>
-            </div>
+        <h1><%=objRSTopic("Subject")%></h1>
+		<div class="forum">
+			<div class="thread row">
+                <div class="column one-fourth">
+                    <strong><a href="/profiles/profile.asp?Member=<%=objRSTopic("UserName")%>"><%=objRSTopic("UserName")%></a></strong>
+                    <div class="user-image">
+                        <img src="/images/dreadbit.png" alt="Alternate Text" />
+                    </div>
+                    <div>
+                        Member Since: <%=objRSTopic("UserJoinDate")%>
+                    </div>
+                </div>
+				<div class="column three-fourths">
+                    <%=objRSTopic("Time")%> 
+                    <div>
+                        <%=objRSTopic("Message")%>
+                    </div>
+				</div>
+			</div>	
+		
+
+		    <%
+		    objRSTopic.MoveNext
+	    Wend
+
+            'GET POSTS
+            For posts = 1 to iPageSize 
+                While Not objRSPosts.EOF
+		    %>
+          
+				<div class="post row">
+					<div class="column one-fourth">
+                        <strong><a href="/profiles/profile.asp?Member=<%=objRSPosts("UserName")%>"><%=objRSPosts("UserName")%></a></strong> 
+                        <div class="user-image">
+                            <img src="/images/dreadbit.png" alt="Alternate Text" />
+                        </div>     
+                        <div>
+                            Member Since: <%=objRSPosts("UserJoinDate")%>
+                        </div>                
+                    </div>
+                    <div class="column three-fourths">
+                         <%=objRSPosts("Time")%> 
+                        <div>
+                            <%=objRSPosts("Message")%>
+                        </div>
+                    </div>
+				</div>
+
+		    <%
+		        objRSPosts.MoveNext
+		        Wend
+            Next       
+		    %>
         </div>
-		<%
-		objRSTopic.MoveNext
-		Wend
-
-        'GET POSTS
-        For posts = 1 to iPageSize 
-            While Not objRSPosts.EOF
-		%>
-        <div class="row clearfix">
-            <div class="column full">
-			    <table width="100%">
-				    <tr class="forum2">
-					    <td>Posted by: <%=objRSPosts("UserName")%> At: <%=objRSPosts("Time")%> <br/>Member Since: <%=objRSPosts("UserJoinDate")%></td>
-				    </tr>
-				    <tr class="forum3">
-					    <td><%=objRSPosts("Message")%></td>
-				    </tr>
-			    </table>
-            </div>
-        </div>
-		<%
-		    objRSPosts.MoveNext
-		    Wend
-        Next
-        Response.Write "<a href='submitreply.asp?CategoryID=" & iCategory & "&TopicID=" & iTopicID & "'>Post A Reply!</a>"
-		%>
-
-
+        <%
+            Response.Write "<a href='submitreply.asp?CategoryID=" & iCategory & "&TopicID=" & iTopicID & "'>Post A Reply!</a>"
+        %>
 	</div>
 </section>

@@ -89,7 +89,7 @@
 					<label>User Name:</label><br/>
 					<input required type="text" name="UserName"><br/>
 					<label>Password:</label><br/>
-					<input requried type="text" name="Password"><br/>
+					<input required type="text" name="Password"><br/>
 					<label>Email:</label><br/>
 					<input required type="text" name="Email2"><br/>
 					<label>Confirm Email:</label><br/>
