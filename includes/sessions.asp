@@ -12,4 +12,8 @@
 			bolLoggedIn = True
 		End If
 	End If
+
+    If Not Request.Cookies("PollComplete") = True Then
+        Response.Cookies("PollComplete") = False
+    End If
 %>

@@ -49,7 +49,9 @@
                         <% 
                             
                             Dim userIPAddress, objRSQuestions, objRSIPCheck, objRSAnswers
-                            Dim strSqlQuestions, strSqlAnswers, strSqlIPCheck
+                            Dim strSqlQuestions, strSqlAnswers, strSqlIPCheck, pollID, pollName, poll , pollCookie
+
+                            pollID = 1
 
                             'Get USer IP
                             userIPAddress = Request.ServerVariables("HTTP_X_FORWARDED_FOR")
@@ -58,40 +60,52 @@
                             End IF  
 
                             'Check User's IP vs DB 
-                            strSqlIPCheck = "Check_Poll_IP " & userIPAddress
-                            objRSIPcheck = Server.CreateObject("ADODB.Recordset")
-                            objRSIPcheck = objCOnn.Execute(strSqlIPCheck)
+                            strSqlIPCheck = "Check_Poll_IP '" & userIPAddress & "'"
+                            Set objRSIPcheck = Server.CreateObject("ADODB.Recordset")
+                            Set objRSIPcheck = objCOnn.Execute(strSqlIPCheck)
                             
-                            If objRSIPCheck.EOF Then
+                            'If IP not in DB and Cookie = false then Get Poll 
+
+                            pollCookie = Request.Cookies("PollComplete")
+                            If ((objRSIPCheck.EOF) And (pollCookie = "False")) Then
                                
                                 'Get Poll Questions ( hasn't voted yet)
 
-                                strSqlQuestions = ""
-                                objRSPoll = Server.CreateObject("ADODB.Recordset")
-                                objRSPoll = objConn.Execute(strSqlQuestions)
+                                strSqlQuestions = "Get_Poll_Options " & pollID
+                                Set objRSPoll = Server.CreateObject("ADODB.Recordset")
+                                Set objRSPoll = objConn.Execute(strSqlQuestions)
+
+                                poll = objRSPoll("PollID")
+                             
+                            %>
+                                <form action="/processpoll.asp?name=<%=poll%>" method="post" name="<%=poll%>">
+							        <h2><%=objRSPoll("PollName")%></h2>
+                                    <%
+                                        While Not objRSPoll.EOF 
+                                        
+                                    %>
+							            <input type="radio" name="<%=poll%>" value="<%=objRSPoll("OptionID")%>"/> <%=objRSPoll("OptionName")%>
+							            <br/>
+							        <%
+                                        objRSPoll.MoveNext
+                                        Wend
+                                    %>
+							        <input type="submit" value="submit"/>
+						        </form>
+                            <%
+
 
                             Else
                                 
-                            'Get Poll Answers ( Already submitted )
+                                Get Poll Answers ( Already submitted )
 
-                            strSqlAnswers = ""
-                            objRSAnswers = Server.CreateObject("ADODB.Recordset")
-                            objRSAnswers = objConn.Execute(strSqlAnswers)
-
+                                strSqlAnswers = "Get_Poll_Counts '" & pollID & "'"
+                                Set objRSAnswers = Server.CreateObject("ADODB.Recordset")
+                                Set objRSAnswers = objConn.Execute(strSqlAnswers)
+                            End If
                            
                         %>
-						<form action="" method="post">
-							<h2>What's Our Next Game?</h2>
-							<input type="radio" name="game" value="lawbreakers"/> Law Breakers
-							<br/>
-							<input type="radio" name="game" value="blah"/> Blah
-							<br/>
-							<input type="radio" name="game" value="wow"/> Back to WoW
-							<br/>
-							<input type="radio" name="game" value="quit"/> I HATE GAMES!
-							<br/>
-							<input type="submit" value="submit"/>
-						</form>
+
 					</aside>
 					<div class="pagebreak"></div>
 					<aside>
