@@ -13,7 +13,7 @@
 						<p>Welcome back! I know it's been a long time but we can blame
 							 Goat, Spawn and Xbox for that. Everyone is planning to set their
 							 focus on upcoming MMO Elder Scrolls Online. With the return of
-							 DAOC like PVP it's time for us to dust off our dicks and get back
+							 DAOC style PVP, it's time for us to dust off our dicks and get back
 							 to rape town! Diki of the "Le Boner Clan" calls the new game
 							 "ASTOUNDING" and "PUNCH YOU IN THE DICK" fun! I don't know about
 							 you guys, but that sounds GAY err awesome to me!</p>
@@ -48,8 +48,8 @@
                        <!----- Poll ----->
                         <% 
                             
-                            Dim userIPAddress, objRSQuestions, objRSIPCheck, objRSAnswers
-                            Dim strSqlQuestions, strSqlAnswers, strSqlIPCheck, pollID, pollName, poll , pollCookie
+                            Dim userIPAddress, objRSQuestions, objRSIPCheck, objRSAnswers, objRSPoll
+                            Dim strSqlQuestions, strSqlAnswers, strSqlIPCheck, pollID, pollName, poll , pollCookie , iPercent, iTotalVotes
 
                             pollID = 1
 
@@ -63,21 +63,21 @@
                             strSqlIPCheck = "Check_Poll_IP '" & userIPAddress & "'"
                             Set objRSIPcheck = Server.CreateObject("ADODB.Recordset")
                             Set objRSIPcheck = objCOnn.Execute(strSqlIPCheck)
-                            
-                            'If IP not in DB and Cookie = false then Get Poll 
+                                                    
+                            'Get Poll Options
+                            strSqlQuestions = "Get_Poll_Options " & pollID
+                            Set objRSPoll = Server.CreateObject("ADODB.Recordset")
+                            Set objRSPoll = objConn.Execute(strSqlQuestions)
 
+                            'If IP not in DB and Cookie = false then Get Poll 
                             pollCookie = Request.Cookies("PollComplete")
                             If ((objRSIPCheck.EOF) And (pollCookie = "False")) Then
                                
                                 'Get Poll Questions ( hasn't voted yet)
-
-                                strSqlQuestions = "Get_Poll_Options " & pollID
-                                Set objRSPoll = Server.CreateObject("ADODB.Recordset")
-                                Set objRSPoll = objConn.Execute(strSqlQuestions)
-
+                           
                                 poll = objRSPoll("PollID")
                              
-                            %>
+                        %>
                                 <form action="/processpoll.asp?name=<%=poll%>" method="post" name="<%=poll%>">
 							        <h2><%=objRSPoll("PollName")%></h2>
                                     <%
@@ -92,18 +92,44 @@
                                     %>
 							        <input type="submit" value="submit"/>
 						        </form>
-                            <%
-
+                        <%
 
                             Else
-                                
-                                Get Poll Answers ( Already submitted )
+                                'Get Poll Results 
 
                                 strSqlAnswers = "Get_Poll_Counts '" & pollID & "'"
                                 Set objRSAnswers = Server.CreateObject("ADODB.Recordset")
                                 Set objRSAnswers = objConn.Execute(strSqlAnswers)
-                            End If
-                           
+
+                               
+                               For iTotalVotes = 0 to objRSAnswers.EOF
+                                    iTotalVotes = iTotalVotes + objRSAnswers("Count")
+                                    Response.Write iTotalVotes
+                                    objRSAnswers.MoveNext
+                               Next
+
+                                objRSAnswers.MoveFirst
+                                'Response.Write iTotalVotes
+                        %>
+                                <div>
+                                    <h2><%=objRSPoll("PollName")%></h2>
+                                </div>
+                        <%
+                                While Not objRSAnswers.EOF 
+                                    While Not objRSPoll.EOF
+                                    
+                                    iPercent = (objRSAnswers("Count") / iTotalVotes) * 100 
+                        %>
+                                    <div class="">
+                                        <%=objRSPoll("OptionName")%> (<%=iPercent%>, <%=objRSAnswers("Count")%> Votes)
+                                        <br />                                       
+                                    </div>
+                        <%
+                                    objRSPoll.MoveNext    
+                                    objRSAnswers.MoveNext                          
+                                    Wend                               
+                                Wend
+                            End If                         
                         %>
 
 					</aside>
