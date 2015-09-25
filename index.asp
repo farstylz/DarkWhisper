@@ -101,15 +101,13 @@
                                 Set objRSAnswers = Server.CreateObject("ADODB.Recordset")
                                 Set objRSAnswers = objConn.Execute(strSqlAnswers)
 
-                               
-                               For iTotalVotes = 0 to objRSAnswers.EOF
+                               iTotalVotes = 0
+                               While Not objRSAnswers.EOF
                                     iTotalVotes = iTotalVotes + objRSAnswers("Count")
-                                    Response.Write iTotalVotes
                                     objRSAnswers.MoveNext
-                               Next
+                               Wend
 
                                 objRSAnswers.MoveFirst
-                                'Response.Write iTotalVotes
                         %>
                                 <div>
                                     <h2><%=objRSPoll("PollName")%></h2>
@@ -121,7 +119,7 @@
                                     iPercent = (objRSAnswers("Count") / iTotalVotes) * 100 
                         %>
                                     <div class="">
-                                        <%=objRSPoll("OptionName")%> (<%=iPercent%>, <%=objRSAnswers("Count")%> Votes)
+                                        <%=objRSPoll("OptionName")%> (<%=iPercent%>%, <%=objRSAnswers("Count")%> Votes)
                                         <br />                                       
                                     </div>
                         <%
@@ -131,7 +129,7 @@
                                 Wend
                             End If                         
                         %>
-
+                                <div class=""><%=iTotalVotes%> Total Votes</div>
 					</aside>
 					<div class="pagebreak"></div>
 					<aside>
