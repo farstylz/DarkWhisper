@@ -7,10 +7,11 @@
 	Dim iTopicID, iPage, strSqlTopic, strSqlPosts, objRSTopic, objRSPosts , iCategory
     iCategory = Request.QueryString("Category")
 	iTopicID = Request.Querystring("Topic")
-	iPageSize = 20
+	iPageSize = 10
 	iPage = Request.Querystring("Page")
 	strSqlTopic = "Get_Topic2 " & iTopicID & "," &  iPageSize
-    strSqlPosts = "Get_Posts " & iTopicID
+    'strSqlPosts = "Get_Posts " & iTopicID
+    strSqlPosts = "GetPostsTest " & iTopicID & "," & iPageSize & "," & iPage
 
     Set objRSPosts = CreateObject("ADODB.Recordset")
     Set objRSPosts = objConn.Execute(strSqlPosts)
@@ -32,34 +33,34 @@
         Else
             Response.Write "<a href='/login.asp'>Post A Reply!</a>"
         End If
-                 
-		While Not objRSTopic.EOF
-		%>
-        <h1><%=objRSTopic("Subject")%></h1>
-		<div class="forum">
-			<div class="thread row">
-                <div class="column one-fourth">
-                    <strong><a href="/profiles/profile.asp?Member=<%=objRSTopic("UserName")%>"><%=objRSTopic("UserName")%></a></strong>
-                    <div class="user-image">
-                        <img src="/images/dreadbit.png" alt="Alternate Text" />
+           
+        If iPage = 1 Then
+		    While Not objRSTopic.EOF
+		    %>
+            <h1><%=objRSTopic("Subject")%></h1>
+		    <div class="forum">
+			    <div class="thread row">
+                    <div class="column one-fourth">
+                        <strong><a href="/profiles/profile.asp?Member=<%=objRSTopic("UserName")%>"><%=objRSTopic("UserName")%></a></strong>
+                        <div class="user-image">
+                            <img src="/images/dreadbit.png" alt="Alternate Text" />
+                        </div>
+                        <div>
+                            Member Since: <%=objRSTopic("UserJoinDate")%>
+                        </div>
                     </div>
-                    <div>
-                        Member Since: <%=objRSTopic("UserJoinDate")%>
-                    </div>
-                </div>
-				<div class="column three-fourths">
-                    <%=objRSTopic("Time")%> 
-                    <div>
-                        <%=objRSTopic("Message")%>
-                    </div>
-				</div>
-			</div>	
-		
+				    <div class="column three-fourths">
+                        <%=objRSTopic("Time")%> 
+                        <div>
+                            <%=objRSTopic("Message")%>
+                        </div>
+				    </div>
+			    </div>	
 
-		    <%
-		    objRSTopic.MoveNext
-	    Wend
-
+		        <%
+		        objRSTopic.MoveNext
+	        Wend
+        End If
             'GET POSTS
             For posts = 1 to iPageSize 
                 While Not objRSPosts.EOF
@@ -72,7 +73,7 @@
                             <img src="/images/dreadbit.png" alt="Alternate Text" />
                         </div>     
                         <div>
-                            Member Since: <%=objRSPosts("UserJoinDate")%>
+                            Member Since: <%=objRSPosts("JoinDate")%>
                         </div>                
                     </div>
                     <div class="column three-fourths">

@@ -307,6 +307,14 @@ h1#members {
 	width:25%;
 }
 
+.column.one-fifth {
+    width:20%;
+}
+
+.column.one-tenth {
+    width:10%
+}
+
 .row:before,
 .row:after {
 	content: " ";
@@ -386,3 +394,26 @@ h1#members {
     padding-bottom:1.5em;
     padding-top:1.5em;
 }
+
+.pagelink{
+    border-radius: 3px 0 0 3px;
+    background: #444;
+    margin: 0;
+    padding:3px 7px;
+    display: inline-block;
+}
+/*------Poll Bar-------*/
+
+.progressbar {
+	background-color: #000000;
+    border-radius: 10px;
+    padding: 8px;
+}
+    
+.progressbar > div {
+    background-color: #444; 
+    height: 8px;
+    border-radius: 10px;
+}
+
+

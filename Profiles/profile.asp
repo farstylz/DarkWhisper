@@ -18,16 +18,10 @@
                     ' Display Members Info
 
                 %>   
-               <div class="column one-fourth">
-                   <strong>User's Name</strong>
+                <div class="column one-fourth">
                     <div class="user-image">
                         <img src="/images/dreadbit.png" alt="Alternate Text" />
-                    </div>
-                    <div>
-                        Member Since: Ex May 3, 2005
-                    </div>    
-                    <div>
-                    </div>
+                    </div>        
                 </div>
                 <%
                 'Else
@@ -35,15 +29,16 @@
                 'End If  
 
                 %>
-           
+                <!-- TODO  Add Name and Bio to DB for Users -->
                 <div class="three-fourths">
-                    <h1>TEST TEST TEST</h1>
-                    <form>
-                        <input hidden name="UserName" value="<%=Session("UserName")%>" />
-                        <label>Comment:</label><br />
-                        <input class="textbox" type="text" name="Comment" /><br />
-                        <input type="button" value="Submit" />
-                    </form>
+                    <h1><%=strMember%></h1>
+                    <div>Name:</div>
+                    <div>Email:</div>
+                    <br />
+                    <div>Forum Posts:</div>
+                    <div>Last Post</div>
+                    <br />
+                    <div>Bio:</div>
                 </div>
              </div>
         </div>

@@ -118,11 +118,11 @@
                                     
                                     iPercent = (objRSAnswers("Count") / iTotalVotes) * 100 
                         %>
-                                    <div class="">
+                                    <div>
                                         <%=objRSPoll("OptionName")%> (<%=iPercent%>%, <%=objRSAnswers("Count")%> Votes)    
                                     </div>                                                                                         
                                     <div class="progressbar">
-                                      <div></div>
+                                      <div style="width:<%=iPercent%>%"></div>
                                     </div>
                         <%
                                     objRSPoll.MoveNext    
@@ -131,7 +131,7 @@
                                 Wend
                             End If                         
                         %>
-                                <div class=""><%=iTotalVotes%> Total Votes</div>
+                                <div><%=iTotalVotes%> Total Votes</div>
 					</aside>
 					<div class="pagebreak"></div>
 					<aside>

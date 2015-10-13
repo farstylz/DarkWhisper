@@ -7,9 +7,9 @@
 		<!-- Forums -->
 		<%
 			Dim strForumName, iPage, iPageSize, iPageIndex, iCategory, strSqlTopics, strSqlReplies, strSqlRecent
-            Dim objRSTopics, objRSReplies, objRSRecent
+            Dim objRSTopics, objRSReplies, objRSRecent, iPageCount, iPageTemp
 			iCategory = Request.Querystring("Category")
-			iPageSize = 20
+			iPageSize = 10
 			iPage = Request.Querystring("Page")
 			strSqlTopics = "GetTopics_ByPage2 '" & iCategory & "'," & iPageSize & "," & iPage
 
@@ -47,14 +47,29 @@
                     strSqlRecent = "Get_Most_Recent " & objRSTopics("TopicID")
                     Set objRSRecent = CreateObject("ADODB.Recordset")
                     Set objRSRecent = objConn.Execute(strSqlRecent)
+                    
+                    'Get count of replies for pagification 
+                    iReplies = Cint(objRSReplies("TotalReplies"))
+                    iPageTemp = (iReplies -1) / iPageSize 
+                    iPageCount = Int(iPageTemp)
+        
                 %>
                     
                     <tr>
-                        <td><a href="forumthread.asp?Category=<%=iCategory%>&Page=1&topic=<%=objRSTopics("TopicID")%>"><%=objRSTopics("Subject")%></a></td>
+                        <td><a href="forumthread.asp?Category=<%=iCategory%>&Page=1&topic=<%=objRSTopics("TopicID")%>"><%=objRSTopics("Subject")%></a>
+                            <%
+                                If iPageCount > 0 Then
+                                    For iCount = 1 to (iPageCount +1)
+                            %>
+                                        <a class="pagelink" href="forumthread.asp?Category=<%=iCategory%>&Page=<%=iCount%>&topic=<%=objRSTopics("TopicID")%>"><%=iCount%></a>
+                            <%
+                                    Next
+                                End If
+                            %>
+                        </td>
                         <td>Posted By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></td>
                         <td><%=objRsReplies("TotalReplies")%></td>
-                    
-                    
+                                       
 					
                 <%
                     IF objRSRecent.EOF Then
