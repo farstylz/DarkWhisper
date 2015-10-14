@@ -19,9 +19,9 @@
 							 you guys, but that sounds GAY err awesome to me!</p>
 					</article>
 					<br>
-					<article>
-						<h2>We Quit!</h2>
-						<h4>Posted by: Stylz</h4>
+					<article class="art-content">
+						<h1>We Quit!</h1>
+						<h2>Posted by: Stylz</h2>
 						<p>I know what your thinking, we usually last for at least a month.
 							 Well fuck you! Leveling was a bitch and nbobody ever got on.
 							 First world troubles, I know. Anyway... I'm going golfing. I'll
@@ -205,7 +205,7 @@
 			</div>
 		</div>
 	</section>
-	<footer class="navbar inverse">
+	<footer class="navbar inverse container">
 		<a href="#">Back to Top</a>
 	</footer>
 

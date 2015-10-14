@@ -163,7 +163,6 @@ a:hover,a:active{
     margin: 2em;
     padding:2em;
     max-width:400px;
-
 }
 
 
@@ -303,6 +302,10 @@ h1#members {
 	width:33.3%;
 }
 
+.column.one-third2 {
+    width:30%;
+}
+
 .column.one-fourth {
 	width:25%;
 }
@@ -382,18 +385,36 @@ h1#members {
     
 }
 
-.thread{
+.topic{
     border-top:1px solid #808080;
 }
 
+.forumbreak {
+    border-bottom:1px solid #808080;
+    margin:0;
+    padding-bottom:1em;
+    padding-top:.75em;
+}
 
 .post,
-.thread{
+.topic{
     border-bottom:1px solid #808080;
     margin:0;
     padding-bottom:1.5em;
     padding-top:1.5em;
 }
+
+thread{
+    border-top:1px solid #808080;
+}
+
+.thread{
+    border-bottom:1px solid #808080;
+    margin:0;
+    padding-bottom:.4em;
+    padding-top:.4em;
+}
+
 
 .pagelink{
     border-radius: 3px 0 0 3px;

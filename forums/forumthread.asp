@@ -4,7 +4,7 @@
 <!--#include virtual="includes/sessions.asp" -->
 <!--#include virtual="includes/header.asp" -->
 <%
-	Dim iTopicID, iPage, strSqlTopic, strSqlPosts, objRSTopic, objRSPosts , iCategory
+	Dim iTopicID, iPage, strSqlTopic, strSqlPosts, objRSTopic, objRSPosts , iCategory, iRow, strClassName
     iCategory = Request.QueryString("Category")
 	iTopicID = Request.Querystring("Topic")
 	iPageSize = 10
@@ -34,12 +34,11 @@
             Response.Write "<a href='/login.asp'>Post A Reply!</a>"
         End If
            
-        If iPage = 1 Then
-		    While Not objRSTopic.EOF
-		    %>
-            <h1><%=objRSTopic("Subject")%></h1>
-		    <div class="forum">
-			    <div class="thread row">
+		While Not objRSTopic.EOF
+            If iPage = 1 Then   
+		%>
+            <h1><%=objRSTopic("Subject")%></h1>                   
+                <div class="topic row">
                     <div class="column one-fourth">
                         <strong><a href="/profiles/profile.asp?Member=<%=objRSTopic("UserName")%>"><%=objRSTopic("UserName")%></a></strong>
                         <div class="user-image">
@@ -49,25 +48,34 @@
                             Member Since: <%=objRSTopic("UserJoinDate")%>
                         </div>
                     </div>
-				    <div class="column three-fourths">
-                        <%=objRSTopic("Time")%> 
+                    <div class="column three-fourths">
+                        <%=objRSTopic("Time")%>
                         <div>
                             <%=objRSTopic("Message")%>
                         </div>
-				    </div>
-			    </div>	
-
-		        <%
-		        objRSTopic.MoveNext
-	        Wend
-        End If
-            'GET POSTS
-            For posts = 1 to iPageSize 
-                While Not objRSPosts.EOF
-		    %>
-          
-				<div class="post row">
-					<div class="column one-fourth">
+                    </div>
+                </div>
+		    <%
+            Else
+            %>       
+            <h1 class="forumbreak"><%=objRSTopic("Subject")%></h1>        
+            <% 
+            End If 
+		objRSTopic.MoveNext
+	    Wend 
+        
+        'GET POSTS
+        iRow = 1 
+        For posts = 1 to iPageSize 
+            While Not objRSPosts.EOF
+                strClassName = ""
+                If iRow Mod 2 = 1 Then
+                    strClassName = "light"
+                End If
+                        
+		%>          
+			    <div class="post row <%=strClassName%>">
+				    <div class="column one-fourth">
                         <strong><a href="/profiles/profile.asp?Member=<%=objRSPosts("UserName")%>"><%=objRSPosts("UserName")%></a></strong> 
                         <div class="user-image">
                             <img src="/images/dreadbit.png" alt="Alternate Text" />
@@ -77,21 +85,32 @@
                         </div>                
                     </div>
                     <div class="column three-fourths">
-                         <%=objRSPosts("Time")%> 
+                            <%=objRSPosts("Time")%> 
                         <div>
                             <%=objRSPosts("Message")%>
                         </div>
                     </div>
-				</div>
+			    </div>
 
-		    <%
-		        objRSPosts.MoveNext
-		        Wend
-            Next       
-		    %>
-        </div>
+		<%
+                iRow = iRow + 1
+		    objRSPosts.MoveNext
+		    Wend
+        Next       
+		%>
+        <br />
+        <div>
         <%
-            Response.Write "<a href='submitreply.asp?CategoryID=" & iCategory & "&TopicID=" & iTopicID & "'>Post A Reply!</a>"
+        Response.Write "<a href='submitreply.asp?CategoryID=" & iCategory & "&TopicID=" & iTopicID & "'>Post A Reply!</a>"
         %>
+        </div>
 	</div>
 </section>
+<footer class="navbar inverse container">
+		<a href="#">Back to Top</a>
+
+</footer>
+
+
+</body>
+</html>

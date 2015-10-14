@@ -3,60 +3,66 @@
 <!--#include virtual="includes/databaseconnect.asp" -->
 <!--#include virtual="includes/sessions.asp" -->
 <!--#include virtual="includes/header.asp" -->
-	<section class="container">
-		<!-- Forums -->
-		<%
-			Dim strForumName, iPage, iPageSize, iPageIndex, iCategory, strSqlTopics, strSqlReplies, strSqlRecent
-            Dim objRSTopics, objRSReplies, objRSRecent, iPageCount, iPageTemp
-			iCategory = Request.Querystring("Category")
-			iPageSize = 10
-			iPage = Request.Querystring("Page")
-			strSqlTopics = "GetTopics_ByPage2 '" & iCategory & "'," & iPageSize & "," & iPage
+<section class="container">
+	<!-- Forums -->
+	<%
+		Dim strForumName, iPage, iPageSize, iPageIndex, iCategory, strSqlTopics, strSqlReplies, strSqlRecent
+        Dim objRSTopics, objRSReplies, objRSRecent, iPageCount, iPageTemp, iRow, strClassName
+		iCategory = Request.Querystring("Category")
+		iPageSize = 10
+		iPage = Request.Querystring("Page")
+		strSqlTopics = "GetTopics_ByPage2 '" & iCategory & "'," & iPageSize & "," & iPage
 
-			Set objRSTopics = CreateObject("ADODB.Recordset")
-			Set objRSTopics = objConn.Execute(strSqlTopics)
+		Set objRSTopics = CreateObject("ADODB.Recordset")
+		Set objRSTopics = objConn.Execute(strSqlTopics)
 
-		%>
+	%>
 
+	<div>
+        <h4><a href="/forums/categories.asp">Forum</a> > <a href="/forums/generalforum.asp?Category=<%=iCategory%>&Page=1"><%=iCategory%></a></h4>
+		<h1><%=iCategory%></h1>
+        <%
+        If bolLoggedIn = True Then
+			Response.Write "<b><a href='submittopic.asp?Category=" & iCategory & "'>Start A New Topic!</a></b>"
+        Else
+            Response.Write "<a href='/login.asp'>Start A New Topic!</a>"
+        End If
+        %>
+        <br />
 		<div>
-            <h4><a href="/forums/categories.asp">Forum</a> > <a href="/forums/generalforum.asp?Category=<%=iCategory%>&Page=1"><%=iCategory%></a></h4>
-			<h1><%=iCategory%></h1>
-            <%
-            If bolLoggedIn = True Then
-			    Response.Write "<b><a href='submittopic.asp?Category=" & iCategory & "'>Start a new topic!</a></b>"
-            Else
-                Response.Write "<a href='/login.asp'>Post A Reply!</a>"
-            End If
-            %>
-			<hr/>
-			<table>
-				<tr>
-					<!-- Topics -->
-					<th>Topic</th>
-					<th>Author</th>
-					<th>Replies</th>
-					<th>Most Recent</th>
-				</tr>
-				<%
-				While Not objRSTopics.EOF
+			<div class="row forumbreak">
+				<!-- Topics -->
+				<div class="column half">Topic</div>
+				<div class="column one-fifth">Author</div>
+				<div class="column one-tenth">Replies</div>
+				<div class="column one-fifth">Most Recent</div>
+			</div>
+			<%
+            iRow = 1
+			While Not objRSTopics.EOF
                     
-                    strSqlReplies = "Get_Post_Replies " & objRSTopics("TopicID")
-                    Set objRSReplies = CreateObject("ADODB.Recordset")
-                    Set objRSReplies = objConn.Execute(strSqlReplies)
+                strSqlReplies = "Get_Post_Replies " & objRSTopics("TopicID")
+                Set objRSReplies = CreateObject("ADODB.Recordset")
+                Set objRSReplies = objConn.Execute(strSqlReplies)
 
-                    strSqlRecent = "Get_Most_Recent " & objRSTopics("TopicID")
-                    Set objRSRecent = CreateObject("ADODB.Recordset")
-                    Set objRSRecent = objConn.Execute(strSqlRecent)
+                strSqlRecent = "Get_Most_Recent " & objRSTopics("TopicID")
+                Set objRSRecent = CreateObject("ADODB.Recordset")
+                Set objRSRecent = objConn.Execute(strSqlRecent)
                     
-                    'Get count of replies for pagification 
-                    iReplies = Cint(objRSReplies("TotalReplies"))
-                    iPageTemp = (iReplies -1) / iPageSize 
-                    iPageCount = Int(iPageTemp)
+                'Get count of replies for pagification 
+                iReplies = Cint(objRSReplies("TotalReplies"))
+                iPageTemp = (iReplies -1) / iPageSize 
+                iPageCount = Int(iPageTemp)
         
-                %>
-                    
-                    <tr>
-                        <td><a href="forumthread.asp?Category=<%=iCategory%>&Page=1&topic=<%=objRSTopics("TopicID")%>"><%=objRSTopics("Subject")%></a>
+                strClassName = ""
+                If iRow Mod 2 = 0 Then
+                    strClassName = "light"
+                End If
+
+                iRow = iRow + 1
+            %>           
+                    <div class="row thread <%=strClassName%>">
+                        <div class="column half"><a href="forumthread.asp?Category=<%=iCategory%>&Page=1&topic=<%=objRSTopics("TopicID")%>"><%=objRSTopics("Subject")%></a>
                             <%
                                 If iPageCount > 0 Then
                                     For iCount = 1 to (iPageCount +1)
@@ -66,32 +72,34 @@
                                     Next
                                 End If
                             %>
-                        </td>
-                        <td>Posted By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></td>
-                        <td><%=objRsReplies("TotalReplies")%></td>
+                        </div>
+                        <div class="column one-fifth">Posted By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></div>
+                        <div class="column one-tenth"><%=objRsReplies("TotalReplies")%></div>
                                        
 					
                 <%
                     IF objRSRecent.EOF Then
                 %>
-                        <td>By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></td>                       
+                        <div class="column one-fifth">By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></div>                       
                 <%
                     Else
                 %>					                        
-                        <td>By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSRecent("UserName")%></a><br /><%=objRSRecent("Time")%></td>
-                    </tr>
+                        <div class="column one-fifth">By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSRecent("UserName")%></a><br /><%=objRSRecent("Time")%></div>                   
                 <%
                     End If
-                    objRSReplies.Close
-                    Set objRSReplies = Nothing 
-                    objRSRecent.Close
-                    Set objRSRecent = Nothing
-					objRSTopics.MoveNext
+                %>
+                        </div>
+                <%
+                objRSReplies.Close
+                Set objRSReplies = Nothing 
+                objRSRecent.Close
+                Set objRSRecent = Nothing
+				objRSTopics.MoveNext
 
-				Wend
-				%>
-			</table>
-			<hr/>
-			<b><a href="submittopic.asp?Category=<%=iCategory%>">Start a new topic!</a></b>
+			Wend
+			%>
 		</div>
-	</section>
+	</div>
+    <br/>
+	<b><a href="submittopic.asp?Category=<%=iCategory%>">Start a new topic!</a></b>
+</section>
