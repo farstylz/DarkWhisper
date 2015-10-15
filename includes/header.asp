@@ -33,7 +33,7 @@
                     <a><%=Session("UserName")%></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="/account.asp?UserID=<%=Session("UserID")%>">Account Settings</a>
+                            <a href="/user/account.asp?UserID=<%=Session("UserID")%>">Account Settings</a>
                         </li>
                         <li>
                             <a href="/logout.asp">Log Out</a>

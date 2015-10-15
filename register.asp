@@ -53,7 +53,7 @@
 
 	<section>
 		<div class="container">
-			<div class="light">
+			<div class="light login">
 				<form method=post action="register.asp">
 					<%
 					If bolUserName = True Then
@@ -77,8 +77,6 @@
 					<input required type="text" name="Email3"><br/>
 					<input type="submit" value="Register">
 			  </form>
-				<br/>
-				<a href="urltoforgotpass">Forgot Password?</a>
 			</div>
 		</div>
 	</section>

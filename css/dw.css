@@ -158,13 +158,27 @@ a:hover,a:active{
 
 /*------------------------------------*/
 
-.login{
+.login {
     display:block;
-    margin: 2em;
+    margin: auto;
     padding:2em;
     max-width:400px;
+    border-radius:5px;
 }
 
+.profile {
+    margin: auto;
+    padding:2em;
+    max-width:800px;
+    border-radius:5px;
+}
+
+.profile dt {
+    float: left;
+    color: #808080;
+    font-weight:bold;
+    padding-right: .5em;
+}
 
 .pagebreak{
 	margin: 5em 0;

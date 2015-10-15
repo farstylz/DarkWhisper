@@ -40,7 +40,7 @@
             <h1><%=objRSTopic("Subject")%></h1>                   
                 <div class="topic row">
                     <div class="column one-fourth">
-                        <strong><a href="/profiles/profile.asp?Member=<%=objRSTopic("UserName")%>"><%=objRSTopic("UserName")%></a></strong>
+                        <strong><a href="//user/profile.asp/profile.asp?Member=<%=objRSTopic("UserName")%>"><%=objRSTopic("UserName")%></a></strong>
                         <div class="user-image">
                             <img src="/images/dreadbit.png" alt="Alternate Text" />
                         </div>
@@ -76,7 +76,7 @@
 		%>          
 			    <div class="post row <%=strClassName%>">
 				    <div class="column one-fourth">
-                        <strong><a href="/profiles/profile.asp?Member=<%=objRSPosts("UserName")%>"><%=objRSPosts("UserName")%></a></strong> 
+                        <strong><a href="//user/profile.asp/profile.asp?Member=<%=objRSPosts("UserName")%>"><%=objRSPosts("UserName")%></a></strong> 
                         <div class="user-image">
                             <img src="/images/dreadbit.png" alt="Alternate Text" />
                         </div>     

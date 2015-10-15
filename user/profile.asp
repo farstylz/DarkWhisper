@@ -11,7 +11,7 @@
 
     <section>
 		<div class="container">
-			<div class="row">
+			<div class="row light profile">
                 <%
                     
                 'If Not IsEmpty(Member) Then
@@ -32,13 +32,20 @@
                 <!-- TODO  Add Name and Bio to DB for Users -->
                 <div class="three-fourths">
                     <h1><%=strMember%></h1>
-                    <div>Name:</div>
-                    <div>Email:</div>
-                    <br />
-                    <div>Forum Posts:</div>
-                    <div>Last Post</div>
-                    <br />
-                    <div>Bio:</div>
+                    <dl>
+                        <dt>Name:</dt>
+                        <dd>Bob Bobtownian</dd>
+                        <dt>Email:</dt>
+                        <dd>Bob@bob.com</dd>
+                        <br />
+                        <dt>Forum Posts:</dt>
+                        <dd>342</dd>
+                        <dt>Last Post:</dt>
+                        <dd>Does Diki Like Penis? 11:27 Oct 12th 2015</dd>
+                        <br />
+                        <dt>Bio:</dt>
+                        <dd>I grew up in BOBTOWN. I'm the king there and it's awesome. Come visit the sometime!</dd>
+                    </dl>
                 </div>
              </div>
         </div>

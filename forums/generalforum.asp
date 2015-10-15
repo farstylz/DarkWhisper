@@ -73,18 +73,18 @@
                                 End If
                             %>
                         </div>
-                        <div class="column one-fifth">Posted By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></div>
+                        <div class="column one-fifth">Posted By:<a href="..//user/profile.asp/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></div>
                         <div class="column one-tenth"><%=objRsReplies("TotalReplies")%></div>
                                        
 					
                 <%
                     IF objRSRecent.EOF Then
                 %>
-                        <div class="column one-fifth">By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></div>                       
+                        <div class="column one-fifth">By:<a href="..//user/profile.asp/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSTopics("UserName")%></a><br /><%=objRSTopics("Time")%></div>                       
                 <%
                     Else
                 %>					                        
-                        <div class="column one-fifth">By:<a href="../profiles/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSRecent("UserName")%></a><br /><%=objRSRecent("Time")%></div>                   
+                        <div class="column one-fifth">By:<a href="..//user/profile.asp/profile.asp?Member=<%=objRSTopics("UserName")%>"><%=objRSRecent("UserName")%></a><br /><%=objRSRecent("Time")%></div>                   
                 <%
                     End If
                 %>
